@@ -1,6 +1,19 @@
 ﻿@page "/function"
-<h3>Function</h3>
 
-@code {
+<MRow Dense>
+    @foreach(var card in _cards)
+    {
+        <MCol key="@card.Title" Cols=@card.Flex>
+            <MCard Height="100" Href="@card.Href">
+                    <MCardTitle class="card-content">@card.Title</MCardTitle>
 
+            </MCard>
+        </MCol>
+    }
+</MRow>
+<style>
+.card-content{
+    background-color:dodgerblue;
+    height:100%;
 }
+</style>

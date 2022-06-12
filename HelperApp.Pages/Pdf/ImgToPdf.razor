@@ -1,0 +1,30 @@
+﻿@page "/img-to-pdf"
+
+<MFileInput
+    @bind-Value="_files"
+    Placeholder=""
+    Label="上传文件"
+    Multiple
+    PrependIcon="mdi-paperclip">
+    <SelectionContent Context="context">
+        <MChip
+            Small
+            Label
+            Color="primary">
+            @_files[context.index].Name
+        </MChip>
+    </SelectionContent>
+</MFileInput>
+
+<MButton OnClick="ImgToPdfAsync" Style="width:100%">
+    转换
+</MButton>
+@code {
+
+    private List<IBrowserFile> _files = new();
+
+    private async Task ImgToPdfAsync()
+    {
+        
+    }
+}

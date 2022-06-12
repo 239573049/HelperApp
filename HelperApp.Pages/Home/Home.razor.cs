@@ -1,14 +1,31 @@
-﻿using HelperApp.Applications.AppService;
-using Microsoft.AspNetCore.Components;
-
-namespace HelperApp.Pages.Home;
+﻿namespace HelperApp.Pages.Home;
 
 partial class Home
 {
-	[Inject] public HomeServices homeServices { get; set; }
-
-	public async Task SaFile()
+	private object _option = new
 	{
-		await homeServices.SaveFile();
-	}
+		Title = new
+		{
+			Text = "在线日志"
+		},
+		Tooltip = new { },
+		Legend = new
+		{
+			Data = new[] { "在线人数" }
+		},
+		XAxis = new
+		{
+			Data = new[] { "2022-6-10", "2022-6-11", "2022-6-12", "2022-6-13", "2022-6-14", "2022-6-15" }
+		},
+		YAxis = new { },
+		Series = new[]
+									{
+			new
+			{
+				Name= "在线人数",
+				Type= "bar",
+				Data= new []{ 5, 20, 36, 10, 10, 20 }
+			}
+		}
+	};
 }
