@@ -1,4 +1,5 @@
-﻿using Token.Inject;
+﻿using Token.HttpClientHelper;
+using Token.Inject;
 
 namespace HelperApp.Applications;
 
@@ -8,5 +9,6 @@ public static class HelperAppApplicationsTag
     public static void AddApplicationsTag(this IServiceCollection services)
     {
         services.AddAutoInject(typeof(HelperAppApplicationsTag));
+        services.AddTokenHttpHelperInject("http://192.168.0.101:5000/");
     }
 }

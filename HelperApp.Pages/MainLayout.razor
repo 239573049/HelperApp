@@ -1,6 +1,7 @@
 ﻿@using HelperApp.Domain
 @inherits LayoutComponentBase
-
+<MApp> 
+    <MErrorHandler>
 <MCard Class="mx-auto overflow-hidden card">
     <MAppBar Color="deep-purple"
              Dark>
@@ -11,6 +12,7 @@
     <MMain class="main-home">
         @Body
     </MMain>
+
     <MNavigationDrawer @bind-Value="drawer"
                        Absolute
                        Temporary>
@@ -30,28 +32,10 @@
             </MListItemGroup>
         </MList>
     </MNavigationDrawer>
-</MCard>
-@code {
-    bool drawer;
-    StringNumber group;
-    List<MainItems> mainItems = new List<MainItems>();
-    protected override void OnInitialized()
-    {
-        mainItems.Add(new MainItems
-            {
-                Icon = "mdi-home",
-                Title = "首页",
-                Href = "/"
-            });
-        mainItems.Add(new MainItems
-            {
-                Icon = "mdi-wrench",
-                Title = "功能",
-                Href = "/function"
-            });
-    }
-}
 
+</MCard>
+</MErrorHandler>
+</MApp>
 <style>
     .main-home {
         width: 100%;
@@ -60,13 +44,16 @@
 
     .card {
         height: 100%;
+        width: 100%;
     }
 
     html {
         height: 100%;
+        width: 100%;
     }
 
     body {
         height: 100%;
+        width: 100%;
     }
 </style>

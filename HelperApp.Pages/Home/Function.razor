@@ -6,7 +6,6 @@
         <MCol key="@card.Title" Cols=@card.Flex class="function-col">
             <MCard Height="70" Href="@card.Href" class="function-card">
                 <MCardTitle class="function-content">@card.Title</MCardTitle>
-
             </MCard>
         </MCol>
     }
@@ -16,11 +15,12 @@
         height: 100%;
         font-size:12px;
         color:#000000;
+    }
 
-    }
     .function-card{
-        background-color: rgb(255 255 255 / 1%);
+        background-color: rgb(255 255 255 / 1%) !important;
     }
+
     .function-col{
         margin-right:8px;
         margin-left:8px;

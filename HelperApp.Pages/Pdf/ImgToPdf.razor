@@ -1,5 +1,10 @@
 ﻿@page "/img-to-pdf"
 
+<div>
+    图片转Pdf
+</div>
+<MDivider></MDivider>
+
 <MFileInput
     @bind-Value="_files"
     Placeholder=""
@@ -19,12 +24,3 @@
 <MButton OnClick="ImgToPdfAsync" Style="width:100%">
     转换
 </MButton>
-@code {
-
-    private List<IBrowserFile> _files = new();
-
-    private async Task ImgToPdfAsync()
-    {
-        
-    }
-}

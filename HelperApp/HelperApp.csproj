@@ -13,10 +13,10 @@
 		<EnableDefaultCssItems>false</EnableDefaultCssItems>
 
 		<!-- Display name -->
-		<ApplicationTitle>HelperApp</ApplicationTitle>
+		<ApplicationTitle>工具箱</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.helperapp</ApplicationId>
+		<ApplicationId>com.token.helperapp</ApplicationId>
 		<ApplicationIdGuid>51B91EC0-1AFC-40EA-BD2C-4B6BECA8D262</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -50,13 +50,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\HelperApp.Pages\HelperApp.Pages.csproj" />
+		<ProjectReference Include="..\HelperApp.Pages\HelperApp.Pages.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="wwwroot\background.jpg">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
+		<Content Update="wwwroot\background.jpg">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 </Project>

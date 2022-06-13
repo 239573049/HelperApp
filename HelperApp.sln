@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperApp.Pages", "HelperAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperApp.Applications", "HelperApp.Applications\HelperApp.Applications.csproj", "{DA2C8ECB-BABA-44B6-8DA1-9D2FBA6EB074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperApp.Domain", "HelperApp.Domain\HelperApp.Domain.csproj", "{F8785C99-6170-4E51-83AF-A69E4FD85992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperApp.Domain", "HelperApp.Domain\HelperApp.Domain.csproj", "{F8785C99-6170-4E51-83AF-A69E4FD85992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
