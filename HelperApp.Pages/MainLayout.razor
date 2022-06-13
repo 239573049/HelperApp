@@ -1,29 +1,24 @@
 ﻿@using HelperApp.Domain
 @inherits LayoutComponentBase
 
-<MCard
-    Class="mx-auto overflow-hidden card">
-    <MAppBar
-        Color="deep-purple"
-        Dark>
+<MCard Class="mx-auto overflow-hidden card">
+    <MAppBar Color="deep-purple"
+             Dark>
         <MAppBarNavIcon @onclick="() => drawer = true"></MAppBarNavIcon>
 
         <MToolbarTitle>Title</MToolbarTitle>
     </MAppBar>
-    <MMain>
+    <MMain class="main-home">
         @Body
     </MMain>
-    <MNavigationDrawer
-        @bind-Value="drawer"
-        Absolute
-        Temporary>
-        <MList
-            Nav
-            Dense>
-            <MListItemGroup
-                @bind-Value="group"
-                ActiveClass="deep-purple--text text--accent-4">
-                @foreach (var i in mainItems)
+    <MNavigationDrawer @bind-Value="drawer"
+                       Absolute
+                       Temporary>
+        <MList Nav
+               Dense>
+            <MListItemGroup @bind-Value="group"
+                            ActiveClass="deep-purple--text text--accent-4">
+                @foreach(var i in mainItems)
                 {
                     <MListItem Href="@i.Href">
                         <MListItemIcon>
@@ -36,35 +31,42 @@
         </MList>
     </MNavigationDrawer>
 </MCard>
-@code{
+@code {
     bool drawer;
     StringNumber group;
-    List<MainItems> mainItems=new List<MainItems>();
+    List<MainItems> mainItems = new List<MainItems>();
     protected override void OnInitialized()
     {
         mainItems.Add(new MainItems
-        {
-            Icon="mdi-home",
-            Title="首页",
-            Href="/"
-        });
+            {
+                Icon = "mdi-home",
+                Title = "首页",
+                Href = "/"
+            });
         mainItems.Add(new MainItems
-        {
-            Icon="mdi-wrench",
-            Title="功能",
-            Href="/function"
-        });
+            {
+                Icon = "mdi-wrench",
+                Title = "功能",
+                Href = "/function"
+            });
     }
 }
 
 <style>
-    .card{
-        height:100%;
+    .main-home {
+        width: 100%;
+        height: 100%;
     }
-html{
-    height:100%;
-}
-body{
-    height:100%;
-}
+
+    .card {
+        height: 100%;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+    }
 </style>
