@@ -12,7 +12,7 @@
 
 1.Pdf合并功能 [√]
 
-2.Pdf转图片功能 [ ]
+2.Pdf转图片功能 [√]
 
 3.图片转换Pdf功能 [√]
 
@@ -22,3 +22,20 @@
 
 原因：作者没有iOS和Mac设备无法对其进行测试
 有考虑对待iOS和Mac设备的支持
+
+## 部署
+
+windowns
+
+```shell
+
+dotnet publish -f net6.0-windows10.0.19041.0 -c Release
+
+```
+Android
+
+```shell
+
+dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=dd666666 /p:AndroidSigningStorePass=dd666666
+
+```

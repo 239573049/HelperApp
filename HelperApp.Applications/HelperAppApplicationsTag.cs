@@ -9,6 +9,6 @@ public static class HelperAppApplicationsTag
     public static void AddApplicationsTag(this IServiceCollection services)
     {
         services.AddAutoInject(typeof(HelperAppApplicationsTag));
-        services.AddTokenHttpHelperInject("http://192.168.0.101:5000/");
+        services.AddTokenHttpHelperInject("http://www.tokengo.top:8000/");
     }
 }
