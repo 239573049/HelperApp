@@ -17,6 +17,12 @@ partial class Function
             Title="img转PDF",
             Flex=3,
             Href="/img-to-pdf"
+        },
+         new Card
+        {
+            Title="Pdf转化图片",
+            Flex=3,
+            Href="/pdf-to-img"
         }
 };
 

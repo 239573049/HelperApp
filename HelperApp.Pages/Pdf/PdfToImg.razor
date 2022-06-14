@@ -1,0 +1,27 @@
+﻿@page "/pdf-to-img"
+
+<div>
+    pdf转换图片
+</div>
+<MDivider></MDivider>
+
+<MFileInput
+    @bind-Value="_files"
+    Placeholder=""
+    Label="上传文件"
+    Multiple
+    Accept=""
+    PrependIcon="mdi-paperclip">
+    <SelectionContent Context="context">
+        <MChip
+            Small
+            Label
+            Color="primary">
+            @_files[context.index].Name
+        </MChip>
+    </SelectionContent>
+</MFileInput>
+
+<MButton OnClick="MangePdfAsync" Style="width:100%">
+    合并
+</MButton>

@@ -23,4 +23,8 @@
 	  <PackageReference Include="Token.Inject" Version="1.1.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\HelperApp.Domain\HelperApp.Domain.csproj" />
+	</ItemGroup>
+
 </Project>

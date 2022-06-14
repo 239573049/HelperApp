@@ -49,4 +49,22 @@ public class PdfServices : ISingletonTag
         stream.Close();
         file.Close();
     }
+
+    /// <summary>
+    /// Pdf转换图片
+    /// </summary>
+    /// <param name="uploadings"></param>
+    /// <returns></returns>
+    public async Task PdfToImgAsync(List<UploadingDto> uploadings)
+    {
+        var stream = await _http.UploadingStreamAsync("api/pdf/pdf-to-img", uploadings);
+
+        // 获取存放路径
+        string path = _helperService.GetPath();
+
+        var file = File.Create(Path.Combine(path, $"{Guid.NewGuid():N}.zip"));
+        await stream.CopyToAsync(file);
+        stream.Close();
+        file.Close();
+    }
 }

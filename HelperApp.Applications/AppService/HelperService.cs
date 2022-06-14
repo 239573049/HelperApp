@@ -12,7 +12,7 @@ public class HelperService : ISingletonTag
         path=Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDocuments).Path,"helper");
 
 #elif WINDOWS
-        path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "helper");
+        path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "helper");
 #endif
         if(!Directory.Exists(path))
         {
