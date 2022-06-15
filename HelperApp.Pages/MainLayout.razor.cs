@@ -24,12 +24,17 @@ partial class MainLayout
             Href = "/function"
         });
 
-        mainItems.Add(new MainItems
+        // 如果是webassembly不展示关于界面
+        if(AppEnvironment.GetAppEnvironment() != AppEnvironmentType.WebAssembly)
         {
-            Icon = "mdi-briefcase-variant-outline",
-            Title = "关于",
-            Href = "/about"
-        });
+            mainItems.Add(new MainItems
+            {
+                Icon = "mdi-briefcase-variant-outline",
+                Title = "关于",
+                Href = "/about"
+            });
+
+        }
     }
 
 }
