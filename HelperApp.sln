@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperApp.Applications", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelperApp.Domain", "HelperApp.Domain\HelperApp.Domain.csproj", "{F8785C99-6170-4E51-83AF-A69E4FD85992}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperApp.WebAssembly", "HelperApp.WebAssembly\HelperApp.WebAssembly.csproj", "{732CBE5E-ED43-44B3-A19E-292A21E9DBD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{F8785C99-6170-4E51-83AF-A69E4FD85992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8785C99-6170-4E51-83AF-A69E4FD85992}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8785C99-6170-4E51-83AF-A69E4FD85992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732CBE5E-ED43-44B3-A19E-292A21E9DBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732CBE5E-ED43-44B3-A19E-292A21E9DBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732CBE5E-ED43-44B3-A19E-292A21E9DBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732CBE5E-ED43-44B3-A19E-292A21E9DBD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
