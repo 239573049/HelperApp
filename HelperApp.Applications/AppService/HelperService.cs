@@ -1,9 +1,17 @@
-﻿using Token.Inject.tag;
+﻿using Microsoft.JSInterop;
+using Token.Inject.tag;
 
 namespace HelperApp.Applications.AppService;
 
 public class HelperService : ISingletonTag
 {
+    private readonly IJSRuntime _js;
+
+    public HelperService(IJSRuntime js)
+    {
+        this._js = js;
+    }
+
     public string GetPath()
     {
         string path = string.Empty;
@@ -27,5 +35,31 @@ public class HelperService : ISingletonTag
         }
 
         return path;
+    }
+
+    /// <summary>
+    /// 保存文件
+    /// </summary>
+    /// <param name="stream"></param>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public async Task SaveFileAsync(Stream stream, string fileName)
+    {
+
+#if(ANDROID || WINDOWS || IOS || MACCATALYST)
+        // 获取存放路径
+        string path = GetPath();
+
+        var file = File.Create(Path.Combine(path, fileName));
+        await stream.CopyToAsync(file);
+        stream.Close();
+        file.Close();
+#else
+
+        using var streamRef = new DotNetStreamReference(stream: stream);
+        await _js.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+
+#endif
+
     }
 }

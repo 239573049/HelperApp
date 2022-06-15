@@ -30,7 +30,7 @@ partial class ImgToPdf
         await PdfServices.ImgToPdfAsync(uploading);
 
 
-        await PopupService.ToastAsync("合并完成，请检查文档目录", AlertTypes.Info);
+        await PopupService.ToastAsync("合并完成;存放至文档目录", AlertTypes.Info);
 
     }
 

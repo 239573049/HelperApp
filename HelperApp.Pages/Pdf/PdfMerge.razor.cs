@@ -29,7 +29,7 @@ partial class PdfMerge
 
         await PdfServices.MangePdfAsync(uploading);
 
-        await PopupService.ToastAsync("转换完成", AlertTypes.Info);
+        await PopupService.ToastAsync("转换完成;存放至文档目录", AlertTypes.Info);
 
     }
 }

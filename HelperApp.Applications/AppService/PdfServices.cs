@@ -22,13 +22,7 @@ public class PdfServices : ISingletonTag
     {
         var stream = await _http.UploadingStreamAsync("api/pdf/mange-pdf", uploadings);
 
-        // 获取存放路径
-        string path = _helperService.GetPath();
-
-        var file = File.Create(Path.Combine(path, $"{Guid.NewGuid():N}.pdf"));
-        await stream.CopyToAsync(file);
-        stream.Close();
-        file.Close();
+        await _helperService.SaveFileAsync(stream, $"{DateTime.Now:yyyyMMddHHmmss}.pdf");
     }
 
     /// <summary>
@@ -40,14 +34,7 @@ public class PdfServices : ISingletonTag
     {
         var stream = await _http.UploadingStreamAsync("api/pdf/img-to-pdf", uploadings);
 
-
-        // 获取存放路径
-        string path = _helperService.GetPath();
-
-        var file = File.Create(Path.Combine(path, $"{Guid.NewGuid():N}.pdf"));
-        await stream.CopyToAsync(file);
-        stream.Close();
-        file.Close();
+        await _helperService.SaveFileAsync(stream, $"{DateTime.Now:yyyyMMddHHmmss}.pdf");
     }
 
     /// <summary>
@@ -59,12 +46,6 @@ public class PdfServices : ISingletonTag
     {
         var stream = await _http.UploadingStreamAsync("api/pdf/pdf-to-img", uploadings);
 
-        // 获取存放路径
-        string path = _helperService.GetPath();
-
-        var file = File.Create(Path.Combine(path, $"{Guid.NewGuid():N}.zip"));
-        await stream.CopyToAsync(file);
-        stream.Close();
-        file.Close();
+        await _helperService.SaveFileAsync(stream, $"{DateTime.Now:yyyyMMddHHmmss}.zip");
     }
 }

@@ -4,21 +4,23 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>HelperApp.WebAssembly</title>
+    <title>工具箱</title>
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="HelperApp.WebAssembly.styles.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <script src="https://cdn.masastack.com/npm/echarts/5.1.1/echarts.min.js"></script>
     <link href="_content/Masa.Blazor/css/masa-blazor.css" rel="stylesheet" />
     <link href="_content/Masa.Blazor/css/masa-extend-blazor.css" rel="stylesheet" />
 
     <link href="https://cdn.masastack.com/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">
     <link href="https://cdn.masastack.com/npm/fontawesome/v5.0.13/css/all.css" rel="stylesheet">
-	<script src="https://cdn.masastack.com/npm/echarts/5.1.1/echarts.min.js"></script>
+
     <script src="_content/BlazorComponent/js/blazor-component.js"></script>
+
 </head>
 
 <body>
@@ -29,29 +31,50 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+
+<script src="_framework/blazor.webassembly.js" autostart="false"></script>
+
+<script type="module">
+  import { BrotliDecode } from './decode.min.js';
+  Blazor.start({
+    loadBootResource: function (type, name, defaultUri, integrity) {
+      if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
+        return (async function () {
+          const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          const originalResponseBuffer = await response.arrayBuffer();
+          const originalResponseArray = new Int8Array(originalResponseBuffer);
+          const decompressedResponseArray = BrotliDecode(originalResponseArray);
+          const contentType = type === 
+            'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+          return new Response(decompressedResponseArray, 
+            { headers: { 'content-type': contentType } });
+        })();
+      }
+    }
+  });
+</script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
-    <script type="module">
-        import { BrotliDecode } from './decode.min.js';
-        Blazor.start({
-            loadBootResource: function (type, name, defaultUri, integrity) {
-                if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
-                    return (async function () {
-                        const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
-                        if (!response.ok) {
-                            throw new Error(response.statusText);
-                        }
-                        const originalResponseBuffer = await response.arrayBuffer();
-                        const originalResponseArray = new Int8Array(originalResponseBuffer);
-                        const decompressedResponseArray = BrotliDecode(originalResponseArray);
-                        const contentType = type ===
-                            'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
-                        return new Response(decompressedResponseArray,
-                            { headers: { 'content-type': contentType } });
-                    })();
-                }
-            }
-        });
+    <script>
+        async function downloadFileFromStream(fileName, contentStreamReference) {
+            const arrayBuffer = await contentStreamReference.arrayBuffer();
+            const blob = new Blob([arrayBuffer]);
+            const url = URL.createObjectURL(blob);
+
+            triggerFileDownload(fileName, url);
+
+            URL.revokeObjectURL(url);
+        }
+
+        function triggerFileDownload(fileName, url) {
+            const anchorElement = document.createElement('a');
+            anchorElement.href = url;
+            anchorElement.download = fileName ?? '';
+            anchorElement.click();
+            anchorElement.remove();
+        }
     </script>
 </body>
 
