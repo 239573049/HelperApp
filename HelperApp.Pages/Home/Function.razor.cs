@@ -1,8 +1,11 @@
-﻿namespace HelperApp.Pages.Home;
+﻿using BlazorComponent;
+
+namespace HelperApp.Pages.Home;
 
 partial class Function
 {
 
+    StringNumber model;
     Card[] _cards = new Card[]
 {
          new Card
