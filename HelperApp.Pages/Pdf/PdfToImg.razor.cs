@@ -16,7 +16,7 @@ partial class PdfToImg
 
     private List<IBrowserFile> _files = new();
 
-    private async Task MangePdfAsync()
+    private async Task PdfToImgAsync()
     {
         await PopupService.ToastAsync("开始转换", AlertTypes.Info);
 

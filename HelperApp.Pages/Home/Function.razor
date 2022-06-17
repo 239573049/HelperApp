@@ -1,69 +1,10 @@
 ﻿@page "/function"
 
-@*<MRow Dense class="function-home">
-    @foreach(var card in _cards)
-    {
-        <MCol key="@card.Title" Cols=@card.Flex class="function-col">
-            <MCard Height="80" Href="@card.Href" class="function-card">
-                <MCardTitle class="function-content">@card.Title</MCardTitle>
-            </MCard>
-        </MCol>
-    }
-</MRow>
-<style>
-    .function-content {
-        height: 100%;
-        font-size:12px;
-        color:blue;
-    }
-
-    .function-card{
-        background-color: rgb(255 255 255 / 8%) !important;
-    }
-
-    .function-col{
-        margin-right:8px;
-        margin-left:8px;
-        margin-top:8px;
-        width:30%;
-    }
-
-    .function-home {
-        background: url(background.jpg);
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center 0;
-    }
-</style>*@
 <div class="function-div">
-    @foreach(var item in Enumerable.Range(1, 15))
+    @foreach(var item in functionItems)
     {
-        <div class="function-card">
-            大小
+        <div class="function-card" @onclick="()=>Href(item.Href!)">
+            @item.Title
         </div>
     }
 </div>
-<style>
-    .function-card {
-        transition: 0.8s;
-        background-color: #3e75a5;
-        background-color: rgb(60%) !important;
-        height: 100px;
-        width: 110px;
-        margin: 2px;
-        text-align: center;
-        border-radius: 6px;
-        float: left;
-    }
-
-    .function-div {
-        background: url(background.jpg);
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center 0;
-    }
-</style>

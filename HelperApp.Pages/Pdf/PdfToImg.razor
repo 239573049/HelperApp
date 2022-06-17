@@ -1,6 +1,6 @@
 ﻿@page "/pdf-to-img"
 
-<div>
+<div class="pdf-title">
     pdf转换图片
 </div>
 <MDivider></MDivider>
@@ -22,6 +22,9 @@
     </SelectionContent>
 </MFileInput>
 
-<MButton OnClick="MangePdfAsync" Style="width:100%">
-    合并
-</MButton>
+
+<div class="pdf-div">
+    <button @onclick="PdfToImgAsync" class="pdf-but">
+        转换
+    </button>
+</div>

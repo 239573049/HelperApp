@@ -1,26 +1,24 @@
 ﻿@page "/img-to-pdf"
 
-<div>
+<div class="pdf-title">
     图片转Pdf
 </div>
 <MDivider></MDivider>
 
 <MFileInput
     @bind-Value="_files"
-    Placeholder=""
     Label="上传文件"
-    Multiple
-    PrependIcon="mdi-paperclip">
+    PrependIcon=""
+    Multiple>
     <SelectionContent Context="context">
-        <MChip
-            Small
-            Label
-            Color="primary">
+        <div class="file-context">
             @_files[context.index].Name
-        </MChip>
+            </div>
     </SelectionContent>
 </MFileInput>
 
-<MButton OnClick="ImgToPdfAsync" Style="width:100%">
-    转换
-</MButton>
+<div class="pdf-div">
+    <button @onclick="ImgToPdfAsync" class="pdf-but">
+        转换
+    </button>
+</div>

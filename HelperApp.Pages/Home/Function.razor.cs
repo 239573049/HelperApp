@@ -1,53 +1,39 @@
-﻿using BlazorComponent;
+﻿using HelperApp.Domain;
+using Microsoft.AspNetCore.Components;
 
 namespace HelperApp.Pages.Home;
 
 partial class Function
 {
+    private readonly List<FunctionItem> functionItems = new List<FunctionItem>();
 
-    StringNumber model;
-    Card[] _cards = new Card[]
-{
-         new Card
-        {
-            Title="PDF合并",
-            Flex=3,
-            Href="/pdf-merge"
+    [Inject] private NavigationManager navigation { get; set; }
 
-        },
-         new Card
-        {
-            Title="img转PDF",
-            Flex=3,
-            Href="/img-to-pdf"
-        },
-         new Card
-        {
-            Title="Pdf转化图片",
-            Flex=3,
-            Href="/pdf-to-img"
-        }
-};
-
-    class Card
-    {
-        /// <summary>
-        /// 标题
-        /// </summary>
-        public string? Title { get; set; }
-
-        /// <summary>
-        /// 大小
-        /// </summary>
-        public int Flex { get; set; }
-
-        /// <summary>
-        /// 路由
-        /// </summary>
-        public string? Href { get; set; }
-    }
     protected override void OnInitialized()
     {
+        functionItems.Add(new FunctionItem
+        {
 
+            Title = "img转PDF",
+            Href = "/img-to-pdf"
+        });
+
+
+        functionItems.Add(new FunctionItem
+        {
+            Title = "图片转Pdf",
+            Href = "/img-to-pdf"
+        });
+
+        functionItems.Add(new FunctionItem
+        {
+            Title = "Pdf转化图片",
+            Href = "/pdf-to-img"
+        });
+    }
+
+    private void Href(string url)
+    {
+        navigation.NavigateTo(url, false);
     }
 }

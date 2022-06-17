@@ -1,6 +1,6 @@
 ﻿@page "/pdf-merge"
 
-<div>
+<div class="pdf-title">
     合并Pdf
 </div>
 <MDivider></MDivider>
@@ -21,6 +21,8 @@
     </SelectionContent>
 </MFileInput>
 
-<MButton OnClick="MangePdfAsync" Style="width:100%">
-    合并
-</MButton>
+<div class="pdf-div">
+    <button @onclick="MangePdfAsync" class="pdf-but">
+        合并
+    </button>
+</div>

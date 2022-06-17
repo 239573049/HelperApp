@@ -1,48 +1,57 @@
 ﻿@using HelperApp.Domain
 @inherits LayoutComponentBase
-<MApp> 
+<MApp class="home">
     <MErrorHandler>
-<MCard Class="mx-auto overflow-hidden card">
-    <MAppBar Color="deep-purple"
-             Dark>
-        <MAppBarNavIcon @onclick="() => drawer = true"></MAppBarNavIcon>
+        <MCard Class="mx-auto overflow-hidden home">
+            <MAppBar Color="deep-purple home"
+                     Dark>
+                <MAppBarNavIcon @onclick="() => drawer = true"></MAppBarNavIcon>
 
-        <MToolbarTitle>Title</MToolbarTitle>
-    </MAppBar>
-    <MMain class="main-home">
-        @Body
-    </MMain>
+                <MToolbarTitle>
+                    工具箱
+                </MToolbarTitle>
+            </MAppBar>
+            <MMain class="main-home">
+                @Body
+            </MMain>
 
-    <MNavigationDrawer @bind-Value="drawer"
-                       Absolute
-                       Temporary>
-        <MList Nav
-               Dense>
-            <MListItemGroup @bind-Value="group"
-                            ActiveClass="deep-purple--text text--accent-4">
-                @foreach(var i in mainItems)
-                {
-                    <MListItem Href="@i.Href">
-                        <MListItemIcon>
-                            <MIcon>@i.Icon</MIcon>
-                        </MListItemIcon>
-                        <MListItemTitle>@i.Title</MListItemTitle>
-                    </MListItem>
-                }
-            </MListItemGroup>
-        </MList>
-    </MNavigationDrawer>
+            <MNavigationDrawer @bind-Value="drawer"
+                               Absolute
+                               Temporary>
+                <MList Nav
+                       Dense>
+                    <MListItemGroup @bind-Value="group"
+                                    ActiveClass="deep-purple--text text--accent-4">
+                        @foreach(var i in mainItems)
+                        {
+                            <MListItem Href="@i.Href">
+                                <MListItemIcon>
+                                    <MIcon>@i.Icon</MIcon>
+                                </MListItemIcon>
+                                <MListItemTitle>@i.Title</MListItemTitle>
+                            </MListItem>
+                        }
+                    </MListItemGroup>
+                </MList>
+            </MNavigationDrawer>
 
-</MCard>
-</MErrorHandler>
+        </MCard>
+    </MErrorHandler>
 </MApp>
+
 <style>
     .main-home {
         width: 100%;
         height: 100%;
+        background: url(background.jpg);
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 0;
     }
 
-    .card {
+    .home {
         height: 100%;
         width: 100%;
     }
@@ -56,4 +65,5 @@
         height: 100%;
         width: 100%;
     }
+
 </style>
