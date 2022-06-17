@@ -11,6 +11,8 @@ public static class HelperAppApplicationsTag
     {
         services.AddAutoInject(typeof(HelperAppApplicationsTag));
         services.AddTokenHttpHelperInject("http://www.tokengo.top:8000/");
+        services.AddMasaBlazor();
+
 #if ANDROID
         AppEnvironment.SetEnvironment(AppEnvironmentType.Android);
 #elif WINDOWS

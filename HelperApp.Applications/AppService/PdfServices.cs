@@ -1,9 +1,10 @@
-﻿using Token.HttpClientHelper;
+﻿using System.Net;
+using Token.HttpClientHelper;
 using Token.Inject.tag;
 
 namespace HelperApp.Applications.AppService;
 
-public class PdfServices : ISingletonTag
+public class PdfServices : IScopedTag
 {
     private readonly TokenHttp _http;
     private readonly HelperService _helperService;
@@ -20,9 +21,11 @@ public class PdfServices : ISingletonTag
     /// <returns></returns>
     public async Task MangePdfAsync(List<UploadingDto> uploadings)
     {
-        var stream = await _http.UploadingStreamAsync("api/pdf/mange-pdf", uploadings);
-
-        await _helperService.SaveFileAsync(stream, $"{DateTime.Now:yyyyMMddHHmmss}.pdf");
+        var stream = await _http.UploadingResponseAsync("api/pdf/mange-pdf", uploadings);
+        if(stream.StatusCode == HttpStatusCode.OK)
+        {
+            await _helperService.SaveFileAsync((await stream.Content.ReadAsStreamAsync()), $"{DateTime.Now:yyyyMMddHHmmss}.pdf");
+        }
     }
 
     /// <summary>
@@ -32,9 +35,13 @@ public class PdfServices : ISingletonTag
     /// <returns></returns>
     public async Task ImgToPdfAsync(List<UploadingDto> uploadings)
     {
-        var stream = await _http.UploadingStreamAsync("api/pdf/img-to-pdf", uploadings);
+        var stream = await _http.UploadingResponseAsync("api/pdf/img-to-pdf", uploadings);
 
-        await _helperService.SaveFileAsync(stream, $"{DateTime.Now:yyyyMMddHHmmss}.pdf");
+        if(stream.StatusCode == HttpStatusCode.OK)
+        {
+
+            await _helperService.SaveFileAsync((await stream.Content.ReadAsStreamAsync()), $"{DateTime.Now:yyyyMMddHHmmss}.pdf");
+        }
     }
 
     /// <summary>
@@ -44,8 +51,11 @@ public class PdfServices : ISingletonTag
     /// <returns></returns>
     public async Task PdfToImgAsync(List<UploadingDto> uploadings)
     {
-        var stream = await _http.UploadingStreamAsync("api/pdf/pdf-to-img", uploadings);
+        var stream = await _http.UploadingResponseAsync("api/pdf/pdf-to-img", uploadings);
 
-        await _helperService.SaveFileAsync(stream, $"{DateTime.Now:yyyyMMddHHmmss}.zip");
+        if(stream.StatusCode == HttpStatusCode.OK)
+        {
+            await _helperService.SaveFileAsync((await stream.Content.ReadAsStreamAsync()), $"{DateTime.Now:yyyyMMddHHmmss}.zip");
+        }
     }
 }

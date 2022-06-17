@@ -18,9 +18,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Masa.Blazor" Version="0.4.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.5" />
 	  <PackageReference Include="Microsoft.JSInterop" Version="6.0.5" />
-	  <PackageReference Include="Token.HttpClientHelper" Version="1.2.0" />
+	  <PackageReference Include="Token.HttpClientHelper" Version="1.2.2" />
 	  <PackageReference Include="Token.Inject" Version="1.1.0" />
 	</ItemGroup>
 

@@ -3,10 +3,9 @@ using Token.Inject.tag;
 
 namespace HelperApp.Applications.AppService;
 
-public class HelperService : ISingletonTag
+public class HelperService : IScopedTag
 {
     private readonly IJSRuntime _js;
-
     public HelperService(IJSRuntime js)
     {
         this._js = js;

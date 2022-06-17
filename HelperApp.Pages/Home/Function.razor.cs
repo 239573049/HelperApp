@@ -14,8 +14,8 @@ partial class Function
         functionItems.Add(new FunctionItem
         {
 
-            Title = "img转PDF",
-            Href = "/img-to-pdf"
+            Title = "合并Pdf",
+            Href = "/pdf-merge"
         });
 
 

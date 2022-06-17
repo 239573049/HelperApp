@@ -4,10 +4,9 @@ using Token.Inject.tag;
 
 namespace HelperApp.Applications.AppService;
 
-public class AppVersionService : ISingletonTag
+public class AppVersionService : IScopedTag
 {
     public readonly TokenHttp _tokenHttp;
-
     public AppVersionService(TokenHttp tokenHttp)
     {
         _tokenHttp = tokenHttp;
@@ -15,11 +14,15 @@ public class AppVersionService : ISingletonTag
 
     public async Task<AppVersion> GetAppVersionAsync()
     {
-        var result = await _tokenHttp.GetAsync<ResponseView<AppVersion>>("api/AppVersion/app-version/" + Constant.Code);
-        if(result.Code == "200")
+        var message = await _tokenHttp.GetAsync<ResponseView<AppVersion>>("api/AppVersion/app-version/" + Constant.Code);
+
+        if(message.Code == "200")
         {
-            return result.Data;
+            return message.Data;
         }
-        throw new Exception("获取版本信息错误");
+        else
+        {
+            throw new Exception(message?.Message ?? "获取版本信息错误");
+        }
     }
 }

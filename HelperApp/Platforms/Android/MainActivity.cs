@@ -33,9 +33,10 @@ public class MainActivity : MauiAppCompatActivity
         for(int i = 0;i < permissions.Length;i++)
         {
             var permission = grantResults[i];
+            // 用户同意的权限
             if(permission == Permission.Granted)
             {
-                // 授权的
+
             }
         }
     }
