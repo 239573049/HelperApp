@@ -1,0 +1,39 @@
+﻿
+<MDialog @bind-Value="UpdateShow"
+         Persistent
+         MaxWidth="290">
+    <ChildContent>
+        <MCard>
+            <MCardTitle>
+                新版本内容
+            </MCardTitle>
+            <MCardText>
+                @if(!ShowDownload)
+                {
+                    @appVersion?.UpdateContent
+                }else{                
+                    <MProgressLinear Value="@CurrentDownloadSize" Height="25">
+                        <strong>@($"{context}%")</strong>
+                    </MProgressLinear>
+                }
+            </MCardText>
+            <MCardActions>
+                <MSpacer></MSpacer>
+                @if(appVersion?.ForcedUpdating != true)
+                {
+                    <MButton Color="green darken-1"
+                         Text
+                         OnClick="() => UpdateShow = false">
+                        取消更新
+                    </MButton>
+                }
+                <MButton Color="green darken-1"
+                         Text
+                         OnClick="UpdateAsync">
+                    更新
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </ChildContent>
+</MDialog>
+

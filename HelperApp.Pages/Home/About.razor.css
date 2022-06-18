@@ -1,15 +1,22 @@
 ﻿.about-title {
-    min-width: 400px;
-    max-width: 500px;
-    padding: 40px;
-    overflow: auto;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 20%;
-    bottom: 0;
-    right: 0;
+    text-align:center;
 }
 
 .about-img {
+    height: 10%;
+    width: 23%;
+    margin-top: 20px;
+}
+
+.about-but{
+    transition:.5s;
+    border-radius: 12px;
+    height: 39px;
+    width: 100%;
+    background-color:cadetblue;
+}
+.about-but:hover{
+    transition:.5s;
+    background-color:aqua;
+    transform:scale(1.05);
 }

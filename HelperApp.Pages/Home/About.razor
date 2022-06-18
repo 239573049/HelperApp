@@ -1,17 +1,14 @@
 ﻿@page "/about"
+@using HelperApp.Pages.Components
 
 <div class="about-title">
-    <MImage MaxHeight="80"
-            MaxWidth="80"
-            Class="about-img"
-            Src="/logo.png">
-    </MImage>
-
+    <img class="about-img" src="/logo.png"/>
     <h1>@Name</h1>
     <h2>当前版本 @Version</h2>
     <br/>
-    <MButton>功能介绍</MButton>
+    <button class="about-but">功能介绍</button>
     <div></div><br/>
-    <MButton OnClick="AppVersionAsync">检查新版本</MButton>
+    <button @onclick="AppVersionAsync" class="about-but">检查新版本</button>
 
+    <UpdateTheInterface appVersion="appVersion" UpdateShow="UpdateShow"/>
 </div>

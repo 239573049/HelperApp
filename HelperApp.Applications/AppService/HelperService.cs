@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using Token.HttpClientHelper;
 using Token.Inject.tag;
 
 namespace HelperApp.Applications.AppService;
@@ -6,9 +7,11 @@ namespace HelperApp.Applications.AppService;
 public class HelperService : IScopedTag
 {
     private readonly IJSRuntime _js;
-    public HelperService(IJSRuntime js)
+    private readonly TokenHttp _tokenHttp;
+    public HelperService(IJSRuntime js, TokenHttp tokenHttp)
     {
         this._js = js;
+        this._tokenHttp = tokenHttp;
     }
 
     public string GetPath()
@@ -61,4 +64,30 @@ public class HelperService : IScopedTag
 #endif
 
     }
+
+    /// <summary>
+    /// 更新下载
+    /// </summary>
+    /// <returns></returns>
+    public async Task UpdateAsync(string url, Action<Task<decimal>> action)
+    {
+        var message = await _tokenHttp.HttpClient.GetAsync(url);
+        // 获取文件大小
+        var filesize = message.Content.Headers.ContentLength;
+        var stream = await message.Content.ReadAsStreamAsync();
+        var file = File.Create(Path.Combine(GetPath(), "helper.apk"));
+        var btyes = new byte[4096];
+        var readlen = 0;
+        int len;
+        while((len = await stream.ReadAsync(btyes)) != 0)
+        {
+            readlen += len;
+            var size = (((decimal) readlen / (decimal) filesize) * 100m);
+            action?.Invoke(Task.FromResult(size));
+            file.Write(btyes);
+        }
+        stream.Close();
+        file.Close();
+    }
+
 }
