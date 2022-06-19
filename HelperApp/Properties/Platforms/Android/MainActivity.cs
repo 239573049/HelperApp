@@ -13,6 +13,10 @@ public class MainActivity : MauiAppCompatActivity
     /// 权限状态码
     /// </summary>
     private const int REQUESTCODE = 1314;
+
+    /// <summary>
+    /// 需要获取的权限
+    /// </summary>
     private string[] Permissions = new string[] { Manifest.Permission.Camera, Manifest.Permission.WriteExternalStorage };
     protected override void OnCreate(Bundle savedInstanceState)
     {

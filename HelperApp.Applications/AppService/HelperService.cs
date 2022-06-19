@@ -75,7 +75,9 @@ public class HelperService : IScopedTag
         // 获取文件大小
         var filesize = message.Content.Headers.ContentLength;
         var stream = await message.Content.ReadAsStreamAsync();
-        var file = File.Create(Path.Combine(GetPath(), "helper.apk"));
+        var filePath = Path.Combine(GetPath(), "helper.apk");
+
+        var file = File.Create(filePath);
         var btyes = new byte[4096];
         var readlen = 0;
         int len;
@@ -90,4 +92,11 @@ public class HelperService : IScopedTag
         file.Close();
     }
 
+    /// <summary>
+    /// 安装更新程序
+    /// </summary>
+    public void Install(string path)
+    {
+
+    }
 }
