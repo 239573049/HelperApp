@@ -48,36 +48,6 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	  <RunAOTCompilation>False</RunAOTCompilation>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
-	  <AndroidLinkTool>proguard</AndroidLinkTool>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -99,10 +69,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Include="Properties\Platforms\Android\Resources\values\colors.xml" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\HelperApp.Pages\HelperApp.Pages.csproj" />
 	</ItemGroup>
 
@@ -110,6 +76,10 @@
 		<Content Update="wwwroot\background.jpg">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>
