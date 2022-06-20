@@ -1,5 +1,6 @@
 ﻿using HelperApp.Applications.AppService;
 using HelperApp.Domain;
+using Masa.Blazor;
 using Microsoft.AspNetCore.Components;
 
 namespace HelperApp.Pages.Components;
@@ -23,6 +24,9 @@ partial class UpdateTheInterface
     /// </summary>
     [Inject] private HelperService _helperService { get; set; }
 
+
+    [Inject] private IPopupService _popupService { get; set; }
+
     /// <summary>
     /// 显示下载进度条
     /// </summary>
@@ -44,9 +48,9 @@ partial class UpdateTheInterface
                 {
                     ShowDownload = false;
                 }
+                await _popupService.AlertAsync("更新包已下载至文档目录请前往安装");
                 StateHasChanged();
             });
-
         }
 
     }
