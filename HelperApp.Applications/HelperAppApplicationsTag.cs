@@ -4,13 +4,12 @@ using Token.Inject;
 
 namespace HelperApp.Applications;
 
-// All the code in this file is included in all platforms.
 public static class HelperAppApplicationsTag
 {
     public static void AddApplicationsTag(this IServiceCollection services)
     {
         services.AddAutoInject(typeof(HelperAppApplicationsTag));
-        services.AddTokenHttpHelperInject("http://www.tokengo.top:8000/");
+        services.AddTokenHttpHelperInject("http://dev.tokengo.top:31005/");
         services.AddMasaBlazor();
 
 #if ANDROID
@@ -24,5 +23,6 @@ public static class HelperAppApplicationsTag
 #else
         AppEnvironment.SetEnvironment(AppEnvironmentType.WebAssembly);
 #endif
+
     }
 }

@@ -82,7 +82,7 @@ public class HelperService : IScopedTag
         while((len = await stream.ReadAsync(btyes)) != 0)
         {
             readlen += len;
-            var size = (((decimal) readlen / (decimal) filesize) * 100m);
+            var size = (readlen / (decimal) filesize * 100m);
             action?.Invoke(Task.FromResult(size));
             file.Write(btyes);
         }
